@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Storage;
+use Laravolt\Avatar\Facade as Avatar;
 
 class AuthController extends Controller
 {
@@ -36,6 +38,9 @@ class AuthController extends Controller
 
         $user->save();
 
+        $avatar = Avatar::create($user->username)->getImageObject()->encode('png');
+        Storage::put('avatars/'.$user->id.'/avatar.png', (string)$avatar);
+
         $user->notify(new SignupActivate($user));
 
         return response()->json([
@@ -64,7 +69,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         $credentials['active'] = 1;
         $credentials['deleted_at'] =null;
-            
+
         if(!Auth::attempt($credentials))
             return response()->json([
                 'message' => 'Unauthorized'
