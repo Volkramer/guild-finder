@@ -62,7 +62,9 @@ class AuthController extends Controller
         ]);
 
         $credentials = request(['email', 'password']);
-
+        $credentials['active'] = 1;
+        $credentials['deleted_at'] =null;
+            
         if(!Auth::attempt($credentials))
             return response()->json([
                 'message' => 'Unauthorized'
