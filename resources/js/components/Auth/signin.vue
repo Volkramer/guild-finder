@@ -2,7 +2,7 @@
   <div>
     <mainframe>
       <div>
-        <form autocomplete="off" @submit.prevent="login" method="post">
+        <form autocomplete="off" @submit.prevent="signin" method="post">
           <div class="form-group">
             <label for="email">E-mail</label>
             <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import mainframe from './mainframe'
+import mainframe from '../mainframe'
 import axios from 'axios'
 export default {
     components: {

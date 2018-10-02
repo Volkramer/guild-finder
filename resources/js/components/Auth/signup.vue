@@ -2,7 +2,7 @@
     <div>
         <mainframe>
             <div>
-                <form autocomplete="off" @submit.prevent="register" method="post">
+                <form autocomplete="off" @submit.prevent="signup" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" class="form-control" v-model="username" required>
@@ -28,7 +28,7 @@
 
 <script>
     import axios from 'axios'
-    import mainframe from './mainframe'
+    import mainframe from '../mainframe'
     export default {
         components: {
             mainframe
@@ -49,7 +49,7 @@
             }
         },
         methods: {
-            register() {
+            signup() {
                 if (this.isDisabled) {
                     return false
                 }
@@ -66,7 +66,9 @@
                     })
                     .then(response => {
                         this.isLoading = false;
-                        console.log(response)
+                        if(response.status === 201){
+                            router.push({ name: 'success', params: { message: response.data.message }});
+                        }
                     })
             }
         }

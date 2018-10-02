@@ -16,7 +16,7 @@
     <div class="navbar-end">
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li><router-link :to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link></li>
+          <li><router-link :to="{ name: 'signin.vue' }" v-if="!isLoggedIn">Login</router-link></li>
           <li><router-link :to="{ name: 'register' }" v-if="!isLoggedIn">Register</router-link></li>
           <span v-if="isLoggedIn">
             <li><router-link :to="{ name: 'profil' }" v-if="user_type == 0"> Hi, {{username}}</router-link></li>
