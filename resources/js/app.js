@@ -10,8 +10,8 @@ import Vue from 'vue'; // Importing Vue Library
 window.Vue = Vue;
 import router from './router';
 import app from './app.vue';
-import navbar from './components/navbar.vue';
-import mainframe from './components/mainframe.vue';
+import navbar from './components/navbar';
+import mainframe from './components/mainframe';
 
 /**
 * Next, we will create a fresh Vue application instance and attach it to

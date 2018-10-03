@@ -20,6 +20,7 @@
                         <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation" required>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
+                    <p>{{message}}</p>
                 </form>
             </div>
         </mainframe>
@@ -28,7 +29,7 @@
 
 <script>
     import axios from 'axios'
-    import mainframe from '../mainframe'
+    import mainframe from './mainframe'
     export default {
         components: {
             mainframe
@@ -66,9 +67,13 @@
                     })
                     .then(response => {
                         this.isLoading = false;
-                        if(response.status === 201){
-                            router.push({ name: 'success', params: { message: response.data.message }});
+                        if(response === 201){
+                            this.$router.push({ name: 'success' });
                         }
+                        else {
+                            return{ message: response.status };
+                        }
+
                     })
             }
         }

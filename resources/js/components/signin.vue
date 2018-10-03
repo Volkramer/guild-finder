@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import mainframe from '../mainframe'
+import mainframe from './mainframe'
 import axios from 'axios'
 export default {
     components: {

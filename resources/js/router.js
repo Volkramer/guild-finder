@@ -7,9 +7,10 @@ Vue.use(VueRouter);
 Import des composants
 */
 import Home from './components/home.vue';
-import Signin from './components/Auth/signin.vue';
-import Signup from './components/Auth/signup.vue';
-import Success from './components/Auth/accountSuccess.vue';
+import Signin from './components/signin.vue';
+import Signup from './components/signup.vue';
+import Success from './components/success.vue';
+import Validate from './components/validate';
 
 // 2. Définition des routes
 // Chaque route doit être mappée à un composant
@@ -33,6 +34,11 @@ const routes = [
         path: '/success',
         name: 'success',
         component: Success
+    },
+    {
+        path: '/validate',
+        name: 'validate',
+        component: Validate
     }
 ]
 
