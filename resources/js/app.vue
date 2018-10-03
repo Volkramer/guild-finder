@@ -17,7 +17,8 @@ export default {
 
 <style>
   body {
-    background-image: url("/assets/images/fonds.png");
+    color: #ffffff;
+    background-image: url("/public/assets/images/fonds.png");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;

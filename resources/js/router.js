@@ -11,6 +11,8 @@ import Signin from './components/signin.vue';
 import Signup from './components/signup.vue';
 import Success from './components/success.vue';
 import Validate from './components/validate';
+import ResetPass from './components/resetPass';
+import NewPass from './components/newPass';
 
 // 2. Définition des routes
 // Chaque route doit être mappée à un composant
@@ -39,8 +41,18 @@ const routes = [
         path: '/validate',
         name: 'validate',
         component: Validate
+    },
+    {
+        path: '/resetpassword',
+        name: 'resetPass',
+        component: ResetPass
+    },
+    {
+        path: '/newpass',
+        name: 'newPass',
+        component: NewPass
     }
-]
+];
 
 export default new VueRouter({
     history: true,

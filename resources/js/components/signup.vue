@@ -57,18 +57,15 @@
                 this.isLoading = true;
                 this.hasErrors = false;
 
-                axios
-                    .post('/api/auth/signup', {
-                        username: this.username,
-                        email: this.email,
-                        password: this.password,
-                        password_confirmation: this.password_confirmation
-                    })
-                    .then(response => {
-                        this.isLoading = false;
-                        this.$router.push({name: 'success'});
-
-                    })
+                axios.post('/api/auth/signup', {
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    password_confirmation: this.password_confirmation
+                }).then(response => {
+                    this.isLoading = false;
+                    this.$router.push({name: 'success'});
+                });
             }
         }
     }
