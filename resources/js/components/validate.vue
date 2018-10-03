@@ -1,7 +1,7 @@
 
 <template>
 <div>
-    <mainframe><p>Congratulation, Youre account is active !!!</p></mainframe>
+    <mainframe><p>Congratulation, Your account is active !!!</p></mainframe>
 </div>
 </template>
 

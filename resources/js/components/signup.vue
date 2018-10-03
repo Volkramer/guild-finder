@@ -20,7 +20,6 @@
                         <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation" required>
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
-                    <p>{{message}}</p>
                 </form>
             </div>
         </mainframe>
@@ -67,12 +66,7 @@
                     })
                     .then(response => {
                         this.isLoading = false;
-                        if(response === 201){
-                            this.$router.push({ name: 'success' });
-                        }
-                        else {
-                            return{ message: response.status };
-                        }
+                        this.$router.push({name: 'success'});
 
                     })
             }

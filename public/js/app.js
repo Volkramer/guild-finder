@@ -12559,7 +12559,6 @@ module.exports = Cancel;
 //
 //
 //
-//
 
 
 
@@ -12601,11 +12600,7 @@ module.exports = Cancel;
                 password_confirmation: this.password_confirmation
             }).then(function (response) {
                 _this.isLoading = false;
-                if (response === 201) {
-                    _this.$router.push({ name: 'success' });
-                } else {
-                    return { message: response.status };
-                }
+                _this.$router.push({ name: 'success' });
             });
         }
     }
@@ -17277,7 +17272,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -17433,9 +17428,7 @@ var render = function() {
                 "button",
                 { staticClass: "btn btn-default", attrs: { type: "submit" } },
                 [_vm._v("Submit")]
-              ),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.message))])
+              )
             ]
           )
         ])
@@ -17705,7 +17698,7 @@ var render = function() {
     "div",
     [
       _c("mainframe", [
-        _c("p", [_vm._v("Congratulation, Youre account is active !!!")])
+        _c("p", [_vm._v("Congratulation, Your account is active !!!")])
       ])
     ],
     1
