@@ -11,6 +11,10 @@
                         <label for="password">Password</label>
                         <input type="password" id="password" class="form-control" v-model="password" required>
                     </div>
+                    <div class="form-group">
+                        <label>Remember me</label>
+                        <input type="checkbox" id="remember-me" class="form-control" v-model="remember">
+                    </div>
                     <div>
                         <button type="submit" class="btn btn-default">Sign in</button>
                         <router-link :to="{ name: 'resetPass' }">Forgot your password?</router-link>
@@ -32,6 +36,7 @@
             return {
                 email: '',
                 password: '',
+                remember: '',
                 isLoading: false,
                 hasErrors: false
             }
@@ -42,7 +47,7 @@
             }
         },
         methods: {
-            login() {
+            signin() {
                 if (this.isDisabled) {
                     return false
                 }
@@ -52,10 +57,12 @@
 
                 axios.post('api/auth/login', {
                     email: this.email,
-                    password: this.password
+                    password: this.password,
+                    remember: this.remember
                 }).then(response => {
                     this.isLoading = false;
-                    console.log(response)
+                    window.axios.default = response;
+                    this.$router.push({name: 'home'});
                 });
             }
         }
