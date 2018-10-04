@@ -72,10 +72,7 @@ class PasswordResetController extends Controller
             ],404);
         }
 
-        setcookie("email", $passwordReset['email']);
-        setcookie("token", $passwordReset['token']);
-
-        return response()->redirectTo('newpass');
+        return response()->redirectTo("newpass/".$passwordReset['email']."/".$passwordReset['token']);
     }
 
     /**

@@ -48,7 +48,7 @@ const routes = [
         component: ResetPass
     },
     {
-        path: '/newpass',
+        path: '/newpass/:email/:token',
         name: 'newPass',
         component: NewPass
     }

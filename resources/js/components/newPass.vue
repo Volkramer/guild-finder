@@ -46,8 +46,8 @@
     },
     methods: {
         newpass() {
-            console.log(this.$cookie);
-            this.message = this.$cookie.get('token')+' ; '+this.$cookie.get('email');
+            this.email = this.$route.params.email;
+            this.token = this.$route.params.token;
             if (this.isDisabled) {
                 return false
             }
@@ -56,12 +56,15 @@
             this.hasErrors = false;
 
             axios.post('/api/password/reset', {
-                token: this.$cookie.get('token'),
-                email: this.$cookie.get('email'),
+                token: this.token,
+                email: this.email,
                 password: this.password,
                 password_confirmation: this.password_confirmation
             }).then(response => {
                 this.isLoading = false;
+                this.message = "you have successfully changed your password";
+            }).catch(error => {
+                this.message = error.response.data.message;
             });
         }
     }
