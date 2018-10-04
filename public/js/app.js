@@ -12723,8 +12723,9 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mainframe__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -12746,13 +12747,18 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: "newPass",
-    components: { Mainframe: Mainframe },
+    components: { Mainframe: __WEBPACK_IMPORTED_MODULE_0__mainframe__["a" /* default */] },
     data: function data() {
         return {
+            message: '',
             email: '',
             token: '',
             password: '',
@@ -12771,6 +12777,8 @@ module.exports = Cancel;
         newpass: function newpass() {
             var _this = this;
 
+            console.log(this.$cookie);
+            this.message = this.$cookie.get('token') + ' ; ' + this.$cookie.get('email');
             if (this.isDisabled) {
                 return false;
             }
@@ -12778,14 +12786,13 @@ module.exports = Cancel;
             this.isLoading = true;
             this.hasErrors = false;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/password/reset', {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/api/password/reset', {
                 token: this.$cookie.get('token'),
                 email: this.$cookie.get('email'),
                 password: this.password,
                 password_confirmation: this.password_confirmation
             }).then(function (response) {
                 _this.isLoading = false;
-                _this.$router.push({ name: 'success' });
             });
         }
     }
@@ -18165,7 +18172,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -18266,7 +18273,13 @@ var render = function() {
                 [_vm._v("Submit")]
               )
             ]
-          )
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v(
+              "\n                " + _vm._s(_vm.message) + "\n            "
+            )
+          ])
         ])
       ])
     ],

@@ -14,18 +14,23 @@
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
+                <div>
+                    {{message}}
+                </div>
             </div>
         </mainframe>
     </div>
 </template>
 
 <script>
-    import axios from 'axios'
+    import Mainframe from './mainframe';
+    import axios from 'axios';
     export default {
         name: "newPass",
         components: {Mainframe},
     data(){
         return {
+            message: '',
             email: '',
             token: '',
             password: '',
@@ -41,6 +46,8 @@
     },
     methods: {
         newpass() {
+            console.log(this.$cookie);
+            this.message = this.$cookie.get('token')+' ; '+this.$cookie.get('email');
             if (this.isDisabled) {
                 return false
             }
@@ -55,7 +62,6 @@
                 password_confirmation: this.password_confirmation
             }).then(response => {
                 this.isLoading = false;
-                this.$router.push({name: 'success'});
             });
         }
     }
