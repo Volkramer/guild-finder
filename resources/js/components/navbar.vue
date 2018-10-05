@@ -16,12 +16,12 @@
         <div class="navbar-end">
             <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>
-                    <li><router-link :to="{ name: 'signin' }" v-if="!isLoggedIn">Login</router-link></li>
-                    <li><router-link :to="{ name: 'signup' }" v-if="!isLoggedIn">Register</router-link></li>
-                    <span v-if="isLoggedIn">
-            <li><router-link :to="{ name: 'profil' }" v-if="user_type == 0"> Hi, {{username}}</router-link></li>
+                    <li><router-link :to="{ name: 'signin' }" v-if="!isLogged">Login</router-link></li>
+                    <li><router-link :to="{ name: 'signup' }" v-if="!isLogged">Register</router-link></li>
+                    <span v-if="isLogged">
+                    <li><router-link :to="{ name: 'profil' }"> Hi, {{username}}</router-link></li>
                     </span>
-                    <li class="nav-link" v-if="isLoggedIn" @click="logout">Logout</li>
+                    <li class="nav-link" v-if="isLogged" @click="logout">Logout</li>
                 </ul>
             </nav>
         </div>
@@ -29,40 +29,47 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
     export default {
+        name: 'navbar',
         data() {
             return {
-                name: null,
-                isLoggedIn:
+                token: localStorage.token,
+                username: ''
             }
         },
-        mounted() {
-            this.setDefaults()
+
+        computed:
+            mapGetters([
+                'isLogged',
+            ]),
+
+        methods: {
+            logout() {
+                this.$store.dispatch('logout');
+            },
         },
-        methods : {
-            setDefaults() {
-                if (this.isLoggedIn) {
-                    let user = JSON.parse(localStorage.getItem('userToken.user'))
-                    this.name = user.name
-                }
-            },
-            change() {
-                this.isLoggedIn = localStorage.getItem('userToken.jwt') != null
-                this.setDefaults()
-            },
-            logout(){
-                localStorage.removeItem('userToken.jwt')
-                localStorage.removeItem('userToken.user')
-                this.change()
-                this.$router.push('/')
+
+        created(){
+            console.log(isLogged);
+            if(this.store.getters.isLogged){
+                axios.get('api/user', {
+                    token: this.token
+                }).then(response => {
+                    console.log(response);
+                    response.data.username
+                }).catch(error =>{
+                    console.log(error);
+                    this.hasErrors = true;
+                });
             }
         }
     }
+
 </script>
 
 <style>
     h1 {
         font-family: LifeCraft;
-        color: white;
     }
 </style>

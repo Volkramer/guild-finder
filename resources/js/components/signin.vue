@@ -61,8 +61,12 @@
                     remember: this.remember
                 }).then(response => {
                     this.isLoading = false;
-                    window.axios.default = response;
-                    this.$router.push({name: 'home'});
+                    this.$store.dispatch('login', response.data.access_token);
+                }).catch(error =>{
+                    console.log(error);
+                    this.isLoading = false;
+                    this.hasErrors = true;
+                    this.password = ''
                 });
             }
         }

@@ -12,6 +12,8 @@ import router from './router';
 import app from './app.vue';
 import navbar from './components/navbar';
 import mainframe from './components/mainframe';
+import store from './store';
+
 var VueCookie = require('vue-cookie');
 
 /**
@@ -26,6 +28,7 @@ Vue.use(VueCookie);
 const vueapp = new Vue({
     el: '#app',
     router,
+    store,
     components: { app },
     template: '<app/>'
 });

@@ -1,30 +1,29 @@
 <template>
-  <div id="vueapp">
-    <navbar/>
-    <router-view/>
-  </div>
+    <div id="vueapp">
+        <navbar/>
+        <router-view/>
+    </div>
 </template>
 
 <script>
-import navbar from './components/navbar'
-export default {
-  name: 'app',
-  components: {
-    navbar
-  }
-}
+    import navbar from './components/navbar'
+    export default {
+        name: 'app',
+        components: {
+            navbar
+        }
+    }
 </script>
 
 <style>
-  body {
-    color: #ffffff;
-    background-image: url("/public/assets/images/fonds.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    margin:0;
-    padding:0;
-    height: 100vh;
-  }
+    body {
+        background-image: url("/public/assets/images/fonds.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        margin:0;
+        padding:0;
+        height: 100vh;
+    }
 </style>
