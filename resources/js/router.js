@@ -13,6 +13,7 @@ import Success from './components/success.vue';
 import Validate from './components/validate';
 import ResetPass from './components/resetPass';
 import NewPass from './components/newPass';
+import Profil from './components/profil';
 
 // 2. Définition des routes
 // Chaque route doit être mappée à un composant
@@ -51,6 +52,11 @@ const routes = [
         path: '/newpass/:email/:token',
         name: 'newPass',
         component: NewPass
+    },
+    {
+        path: '/profils',
+        name: 'profil',
+        component: Profil
     }
 ];
 

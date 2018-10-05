@@ -29,7 +29,8 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import axios from 'axios'
+    import {mapGetters} from 'vuex'
     export default {
         name: 'navbar',
         data() {
@@ -39,10 +40,11 @@
             }
         },
 
-        computed:
-            mapGetters([
-                'isLogged',
-            ]),
+        computed: {
+            ...mapGetters({
+                isLogged: 'isLogged'
+            })
+        },
 
         methods: {
             logout() {
@@ -51,13 +53,14 @@
         },
 
         created(){
-            console.log(isLogged);
-            if(this.store.getters.isLogged){
-                axios.get('api/user', {
-                    token: this.token
+            if(this.isLogged){
+                axios.get('api/auth/user', {
+                    headers: {
+                        'Authorization': 'Bearer '+this.token
+                    }
                 }).then(response => {
                     console.log(response);
-                    response.data.username
+                    this.username = response.data.username
                 }).catch(error =>{
                     console.log(error);
                     this.hasErrors = true;

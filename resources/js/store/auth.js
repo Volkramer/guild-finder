@@ -33,12 +33,12 @@ const actions = {
     login({commit}, token){
         commit(types.LOGIN);
         localStorage.setItem('token', token);
-        router.push({name: 'Home'});
+        router.push({name: 'home'});
     },
     logout({commit}){
         commit(types.LOGOUT);
         localStorage.removeItem('token');
-        router.push({name: 'login'});
+        router.push({name: 'signin'});
     }
 };
 

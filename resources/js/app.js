@@ -12,7 +12,7 @@ import router from './router';
 import app from './app.vue';
 import navbar from './components/navbar';
 import mainframe from './components/mainframe';
-import store from './store';
+import store from './store/index';
 
 var VueCookie = require('vue-cookie');
 
