@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './store/index'
 
 Vue.use(VueRouter);
 
 /*
-Import des composants
+Components importation
 */
 import Home from './components/home.vue';
 import Signin from './components/signin.vue';
@@ -13,10 +14,23 @@ import Success from './components/success.vue';
 import Validate from './components/validate';
 import ResetPass from './components/resetPass';
 import NewPass from './components/newPass';
-import Profil from './components/profil';
+import Dashboard from './components/dashboard';
 
-// 2. Définition des routes
-// Chaque route doit être mappée à un composant
+// function to test Auth
+
+/*async function requireAuth (to, from, next) {
+    if (!store.getters.isLogged) {
+        next('signin');
+        return;
+    }
+    else {
+        next();
+    }
+}*/
+
+
+// Routes definition
+// Each route must be mapped to a component
 const routes = [
     {
         path: '/',
@@ -54,9 +68,10 @@ const routes = [
         component: NewPass
     },
     {
-        path: '/profils',
-        name: 'profil',
-        component: Profil
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard,
+        // beforeEnter: requireAuth()
     }
 ];
 

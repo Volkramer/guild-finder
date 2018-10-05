@@ -14,8 +14,6 @@ import navbar from './components/navbar';
 import mainframe from './components/mainframe';
 import store from './store/index';
 
-var VueCookie = require('vue-cookie');
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -23,7 +21,6 @@ var VueCookie = require('vue-cookie');
  */
 
 Vue.component('app', require('./app.vue'));
-Vue.use(VueCookie);
 
 const vueapp = new Vue({
     el: '#app',
