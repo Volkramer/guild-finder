@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Notifications\SignupActivate;
 use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -127,6 +128,6 @@ class AuthController extends Controller
         $user->active = true;
         $user->activation_token = '';
         $user->save();
-        return $user;
+        return response()->redirectTo("validate");
     }
 }

@@ -71,7 +71,8 @@ class PasswordResetController extends Controller
                 'message' => 'This password reset token is invalid.'
             ],404);
         }
-        return response()->json($passwordReset);
+
+        return response()->redirectTo("newpass/".$passwordReset['email']."/".$passwordReset['token']);
     }
 
     /**

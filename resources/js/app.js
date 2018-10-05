@@ -5,9 +5,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'; // Importing Vue Library
+window.Vue = Vue;
+import router from './router';
+import app from './app.vue';
+import navbar from './components/navbar';
+import mainframe from './components/mainframe';
+import store from './store/index';
+
+var VueCookie = require('vue-cookie');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +22,23 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('app', require('./app.vue'));
+Vue.use(VueCookie);
 
-const app = new Vue({
-    el: '#app'
+const vueapp = new Vue({
+    el: '#app',
+    router,
+    store,
+    components: { app },
+    template: '<app/>'
+});
+
+new Vue({
+    components: { navbar },
+    template: '<navbar/>'
+});
+
+new Vue({
+    components: { mainframe },
+    template: '<mainframe/>'
 });
