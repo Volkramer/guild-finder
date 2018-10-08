@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+/**
+ * Route for authentification
+ */
+
 Route::group([
     'prefix' => 'auth'
 ], function() {
@@ -28,6 +32,10 @@ Route::group([
     });
 });
 
+/**
+ * Route for reset password
+ */
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'password'
@@ -35,4 +43,14 @@ Route::group([
     Route::post('create', 'PasswordResetController@create');
     Route::get('find/{token}', 'PasswordResetController@find');
     Route::post('reset', 'PasswordResetController@reset');
+});
+
+/**
+ * Route for api blizzard
+ */
+
+Route::group([
+    'prefix' => 'apibli'
+], function () {
+    Route::get('server', 'ApiBlizzardController@getServer');
 });

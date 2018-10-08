@@ -1,6 +1,6 @@
 <template>
     <div class="profil">
-        <img v-bind:src=require(user.avatar_url)/>
+        <img :src="image"/>
         <p>Username: {{user.username}}</p>
         <p>email: {{user.email}}</p>
         <p>account created date: {{user.created_at}}</p>
@@ -18,7 +18,11 @@
             }
         },
 
-        computed: {},
+        computed: {
+            image(){
+                return this.user.avatar_url;
+            }
+        },
         created(){
             axios.get('api/auth/user', {
                 headers: {
