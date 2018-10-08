@@ -30,7 +30,6 @@
                 }
             }).then(response => {
                 this.user = response.data
-                console.log(this.user)
             }).catch(error =>{
                 console.log(error);
                 this.hasErrors = true;

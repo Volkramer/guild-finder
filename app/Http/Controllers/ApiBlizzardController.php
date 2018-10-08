@@ -13,16 +13,12 @@ class ApiBlizzardController extends Controller
      */
     public function getServer(Request $request)
     {
-        $opts = array(
-            'http'=>array(
-                'method'=>"GET"
-            )
-        );
+        $opts = array('http'=>array('method'=>"GET"));
 
         $context = stream_context_create($opts);
 
-        $file = file_get_contents('https://'.$zone.'.api.battle.net/wow/realm/status?locale=en_US&apikey='.$key, false, $context);
-        return json_encode($file)
+        $server = file_get_contents('https://'.$request->zone.'.api.battle.net/wow/realm/status?locale=en_US&apikey='.$this->key, false, $context);
+        return $server;
     }
 
 }

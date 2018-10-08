@@ -15,12 +15,6 @@ class AuthController extends Controller
 {
     /**
      * Create user
-     *
-     * @param  [string] username
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [string] password_confirmation
-     * @return [string] message
      */
     public function signup(Request $request)
     {
@@ -51,13 +45,6 @@ class AuthController extends Controller
 
     /**
      * Login user and create token
-     *
-     * @param  [string] email
-     * @param  [string] password
-     * @param  [boolean] remember_me
-     * @return [string] access_token
-     * @return [string] token_type
-     * @return [string] expires_at
      */
     public function login(Request $request)
     {

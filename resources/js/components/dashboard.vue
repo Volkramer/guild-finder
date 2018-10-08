@@ -4,16 +4,16 @@
             <section>
                 <profil/>
                 <form autocomplete="off" @submit.prevent="addcharacter" method="post">
-                    <select v-model="zone">
-                        <option>EU</option>
-                        <option>KR</option>
-                        <option>TW</option>
-                        <option>US</option>
+                    <select v-model="zone" @change="onChangeZone">
+                        <option value="" selected>Your geographical zone</option>
+                        <option value="eu">EU</option>
+                        <option value="kr">KR</option>
+                        <option value="tw">TW</option>
+                        <option value="us">US</option>
                     </select>
                     <select v-model="server">
-                        <option v-for="server in servers" v-bind:value="server.name">
-                            {{ server.name }}
-                        </option>
+                        <option value="" selected>Choose your server</option>
+                        <option v-for="server in servers.realms" :value="server.slug">{{server.name}}</option>
                     </select>
                     <div class="form-group">
                         <label>Character Name</label>
@@ -32,10 +32,33 @@
 <script>
     import Mainframe from "./mainframe";
     import Profil from "./profil";
+    import axios from "axios";
     export default {
         name: "dashboard",
-        components: {Profil, Mainframe}
+        components: {Profil, Mainframe},
+        data(){
+            return{
+                server: '',
+                servers: '',
+                zone: '',
+                characterName: ''
+            }
+        },
+        computed: {
 
+        },
+        methods: {
+            onChangeZone(){
+                axios.post('api/apiblizzard/server', {
+                    zone: this.zone
+                }).then(response => {
+                    this.servers=response.data;
+                    console.log(JSON.parse(JSON.stringify(this.servers)));
+                }).catch(error =>{
+                    console.log(error);
+                });
+            }
+        }
     }
 </script>
 
