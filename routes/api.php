@@ -52,5 +52,6 @@ Route::group([
 Route::group([
     'prefix' => 'apiblizzard'
 ], function () {
-    Route::post('server', 'ApiBlizzardController@getServer');
+    Route::post('getserver', 'ApiBlizzardController@getServer');
+    Route::post('getcharacter', 'ApiBlizzardController@getCharacter');
 });
