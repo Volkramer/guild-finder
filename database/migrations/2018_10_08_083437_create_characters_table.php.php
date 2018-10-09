@@ -17,10 +17,10 @@ class CreateCharactersTable extends Migration
             $table->increments('id');
             $table->string('character_name');
             $table->string('class');
+            $table->string('race');
             $table->string('server');
             $table->string('faction');
             $table->integer('lvl');
-            $table->string('armory_link');
             $table->timestamps();
         });
     }

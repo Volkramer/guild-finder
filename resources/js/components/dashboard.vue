@@ -84,8 +84,22 @@
                 }).catch(error =>{
                     console.log(error);
                 });
-            }
+            },
 
+            validCharacter(){
+                axios.post('api/character/create', {
+                    character_name: this.character.name,
+                    class: this.character.class,
+                    race: this.character.race,
+                    server: this.character.realm,
+                    faction: this.character.faction,
+                    lvl: this.character.level
+                }).then(response => {
+                    console.log(response.data);
+                }).catch(error =>{
+                    console.log(error);
+                });
+            }
         }
     }
 </script>
