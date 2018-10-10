@@ -21,15 +21,18 @@ class CharacterController extends Controller
             'lvl' => 'required|integer'
         ]);
 
-        $character = new Character([
-            'character_name' => $request->character_name,
-            'class' => $request->class,
-            'race' => $request->race,
-            'server' => $request->server,
-            'faction' => $request->faction,
-            'lvl' => $request->lvl
-        ]);
-
+        $character = new Character;
+        $character->character_name = $request['character_name'];
+        $character->class = $request['class'];
+        $character->race = $request['race'];
+        $character->server = $request['server'];
+        $character->lvl = $request['lvl'];
+        if($request['faction'] == 1){
+            $character->faction = "horde";
+        }
+        else{
+            $character->faction = "alliance";
+        }
         $character->save();
 
         return response()->json([
