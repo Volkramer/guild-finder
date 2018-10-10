@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Character;
+use App\User;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller
 {
     /**
-     * @param
      * Create Character
      */
     public function create(Request $request){
@@ -28,15 +28,26 @@ class CharacterController extends Controller
         $character->server = $request['server'];
         $character->lvl = $request['lvl'];
         if($request['faction'] == 1){
-            $character->faction = "horde";
+            $character->faction = "Horde";
         }
         else{
-            $character->faction = "alliance";
+            $character->faction = "Alliance";
         }
         $character->save();
 
         return response()->json([
             'message' => 'Character created'
         ]);
+    }
+
+    /**
+     * Read Character
+     */
+    public function read(Request $request){
+        echo $request;
+        $user = User::find($request->username);
+        var_dump($user);
+
+        return $user->characters();
     }
 }

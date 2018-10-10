@@ -41,5 +41,6 @@
 <style scoped>
     .profil{
         border: white 5px solid;
+        margin-bottom: 20px;
     }
 </style>

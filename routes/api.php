@@ -64,4 +64,5 @@ Route::group([
     'prefix' => 'character'
 ], function(){
     Route::post('create', 'CharacterController@create');
+    Route::post('read', 'CharacterController@read');
 });
