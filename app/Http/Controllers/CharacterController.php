@@ -44,9 +44,7 @@ class CharacterController extends Controller
      * Read Character
      */
     public function read(Request $request){
-        echo $request;
-        $user = User::find($request->username);
-        var_dump($user);
+        $user = User::where('username', $request->username)->first();
 
         return $user->characters();
     }

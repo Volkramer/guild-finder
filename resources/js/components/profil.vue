@@ -34,6 +34,7 @@
                 console.log(error);
                 this.hasErrors = true;
             });
+            this.$emit('created', )
         }
     }
 </script>

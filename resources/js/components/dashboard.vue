@@ -26,16 +26,30 @@
         data() {
             return {
                 characters: '',
-                character: ''
+                character: '',
+                username: '',
+                token: localStorage.token
             }
         },
-        created() {
-            axios.post('/api/character/read', {
-                'username': this.username
+        computed: {
+
+        },
+        mounted() {
+            axios.get('api/auth/user', {
+                headers: {
+                    'Authorization': 'Bearer '+this.token
+                }
+            }).then(response => {
+                axios.post('/api/character/read', {
+                    username: response.data.username
                 }).then(response => {
-                characters: response.data;
-                console.log(response.data);
-            })
+                    characters: response.data;
+                })
+            }).catch(error =>{
+                console.log(error);
+                this.hasErrors = true;
+            });
+
         }
     }
 

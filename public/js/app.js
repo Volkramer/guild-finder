@@ -13907,15 +13907,29 @@ module.exports = Cancel;
     data: function data() {
         return {
             characters: '',
-            character: ''
+            character: '',
+            username: '',
+            token: localStorage.token
         };
     },
-    created: function created() {
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/character/read', {
-            'username': this.username
+
+    computed: {},
+    mounted: function mounted() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/auth/user', {
+            headers: {
+                'Authorization': 'Bearer ' + this.token
+            }
         }).then(function (response) {
-            characters: response.data;
-            console.log(response.data);
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/character/read', {
+                username: response.data.username
+            }).then(function (response) {
+                characters: response.data;
+            });
+        }).catch(function (error) {
+            console.log(error);
+            _this.hasErrors = true;
         });
     }
 });
@@ -13966,6 +13980,7 @@ module.exports = Cancel;
             console.log(error);
             _this.hasErrors = true;
         });
+        this.$emit('created');
     }
 });
 
@@ -19742,7 +19757,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
