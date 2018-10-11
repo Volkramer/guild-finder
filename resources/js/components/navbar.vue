@@ -19,7 +19,7 @@
                     <li><router-link :to="{ name: 'signin' }" v-if="!isLogged">Login</router-link></li>
                     <li><router-link :to="{ name: 'signup' }" v-if="!isLogged">Register</router-link></li>
                     <span v-if="isLogged">
-                    <li><router-link :to="{ name: 'profil' }"> Hi, {{username}}</router-link></li>
+                    <li><router-link :to="{ name: 'dashboard' }"> Hi, {{username}}</router-link></li>
                     </span>
                     <li class="nav-link" v-if="isLogged" @click="logout">Logout</li>
                 </ul>
@@ -59,7 +59,6 @@
                         'Authorization': 'Bearer '+this.token
                     }
                 }).then(response => {
-                    console.log(response);
                     this.username = response.data.username
                 }).catch(error =>{
                     console.log(error);
