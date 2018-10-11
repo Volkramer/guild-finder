@@ -43,7 +43,8 @@
                 axios.post('/api/character/read', {
                     username: response.data.username
                 }).then(response => {
-                    characters: response.data;
+                    this.characters = response.data;
+                    console.log(this.characters)
                 })
             }).catch(error =>{
                 console.log(error);

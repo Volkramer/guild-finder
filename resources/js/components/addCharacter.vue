@@ -53,6 +53,8 @@
                 characterName: '',
                 character: '',
                 serverName: '',
+                username: '',
+                token: localStorage.token,
             }
         },
 
@@ -80,17 +82,39 @@
             },
 
             validCharacter(){
-                axios.post('api/character/create', {
-                    character_name: this.character.name,
-                    class: this.character.class,
-                    race: this.character.race,
-                    server: this.character.realm,
-                    faction: this.character.faction,
-                    lvl: this.character.level
+                axios.get('api/auth/user', {
+                    headers: {
+                        'Authorization': 'Bearer '+this.token
+                    }
                 }).then(response => {
-                    console.log(response.data);
+                    axios.post('api/character/create', {
+                        username: response.data.username,
+                        character_name: this.character.name,
+                        class: this.character.class,
+                        race: this.character.race,
+                        server: this.character.realm,
+                        faction: this.character.faction,
+                        lvl: this.character.level
+                    }).then(response => {
+                        console.log(response.data);
+                    }).catch(error => {
+                        console.log(error);
+                    });
+                })
+                axios.get('api/auth/user', {
+                    headers: {
+                        'Authorization': 'Bearer '+this.token
+                    }
+                }).then(response => {
+                    axios.post('/api/character/read', {
+                        username: response.data.username
+                    }).then(response => {
+                        this.characters = response.data;
+                        console.log(this.characters)
+                    })
                 }).catch(error =>{
                     console.log(error);
+                    this.hasErrors = true;
                 });
             }
         }

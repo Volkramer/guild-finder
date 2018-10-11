@@ -1,8 +1,8 @@
 <template>
     <div class="block">
-        <p>Character Name: {{character.name}}</p>
-        <p>Realm: {{character.realm}}</p>
-        <p>Lvl: {{character.level}}</p>
+        <p>Character Name: {{character.character_name}}</p>
+        <p>Realm: {{character.server}}</p>
+        <p>Lvl: {{character.lvl}}</p>
         <p>Class: {{character.class}}</p>
         <p>Race: {{character.race}}</p>
         <p>Faction: {{character.faction}}</p>
@@ -14,7 +14,9 @@
         name: "characterbox",
         props: ['character'],
         data(){
-            character: ''
+            return {
+
+            }
         }
     }
 </script>

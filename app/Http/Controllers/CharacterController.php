@@ -21,6 +21,8 @@ class CharacterController extends Controller
             'lvl' => 'required|integer'
         ]);
 
+        $user = User::where('username', $request->username)->first();
+
         $character = new Character;
         $character->character_name = $request['character_name'];
         $character->class = $request['class'];
@@ -33,7 +35,7 @@ class CharacterController extends Controller
         else{
             $character->faction = "Alliance";
         }
-        $character->save();
+        $user->characters()->save($character);
 
         return response()->json([
             'message' => 'Character created'
@@ -45,7 +47,6 @@ class CharacterController extends Controller
      */
     public function read(Request $request){
         $user = User::where('username', $request->username)->first();
-
-        return $user->characters();
+        return $user->characters;
     }
 }
