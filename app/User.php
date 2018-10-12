@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Character');
     }
+
+    public function guilds()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }
