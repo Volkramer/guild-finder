@@ -52,7 +52,22 @@
             },
         },
 
-        created(){
+        mounted(){
+            if(this.isLogged){
+                axios.get('api/auth/user', {
+                    headers: {
+                        'Authorization': 'Bearer '+this.token
+                    }
+                }).then(response => {
+                    this.username = response.data.username
+                }).catch(error =>{
+                    console.log(error);
+                    this.hasErrors = true;
+                });
+            }
+        },
+
+        updated(){
             if(this.isLogged){
                 axios.get('api/auth/user', {
                     headers: {

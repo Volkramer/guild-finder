@@ -15,18 +15,18 @@ class CreateGuildsTable extends Migration
     {
         Schema::create('guilds', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('guild_name');
+            $table->string('guild_name')->unique();
             $table->string('server');
             $table->string('faction');
-            $table->string('gameplay');
-            $table->boolean('jce');
-            $table->boolean('jcj');
-            $table->string('description');
+            $table->string('gameplay')->nullable();
+            $table->boolean('jce')->default(0);
+            $table->boolean('jcj')->default(0);
+            $table->string('description')->nullable();
             $table->timestamps();
         });
 
         Schema::table('characters', function (Blueprint $table) {
-            $table->integer('guild_id');
+            $table->integer('guild_id')->unsigned()->index;
         });
 
         Schema::create('guild_user', function (Blueprint $table) {

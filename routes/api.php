@@ -54,6 +54,7 @@ Route::group([
 ], function () {
     Route::post('getserver', 'ApiBlizzardController@getServer');
     Route::post('getcharacter', 'ApiBlizzardController@getCharacter');
+    Route::post('getguild', 'ApiBlizzardController@getGuild');
 });
 
 /**
@@ -65,4 +66,13 @@ Route::group([
 ], function(){
     Route::post('create', 'CharacterController@create');
     Route::post('read', 'CharacterController@read');
+});
+
+/**
+ * Route for Guild
+ */
+Route::group([
+    'prefix' => 'guild'
+], function (){
+    Route::post('create', 'GuildController@create');
 });

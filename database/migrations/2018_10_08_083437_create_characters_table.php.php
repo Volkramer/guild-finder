@@ -21,6 +21,7 @@ class CreateCharactersTable extends Migration
             $table->string('server');
             $table->string('faction');
             $table->integer('lvl');
+            $table->string('zone');
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });

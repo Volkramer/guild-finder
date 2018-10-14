@@ -16,6 +16,6 @@ class Character extends Model
 
     public function guild()
     {
-        return $this->belongsTo('App\guild');
+        return $this->belongsTo('App\Guild');
     }
 }
