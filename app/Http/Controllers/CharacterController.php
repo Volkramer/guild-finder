@@ -42,8 +42,8 @@ class CharacterController extends Controller
             $character->faction = "Alliance";
         }
 
-        $user = $user->characters()->save($character);
-        $guild = $guild->characters()->save($character);
+        $user->characters()->save($character);
+        $guild->characters()->save($character);
 
         return response()->json([
             'message' => 'Character created'
