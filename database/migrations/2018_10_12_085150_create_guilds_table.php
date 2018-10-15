@@ -26,7 +26,7 @@ class CreateGuildsTable extends Migration
         });
 
         Schema::table('characters', function (Blueprint $table) {
-            $table->integer('guild_id')->unsigned()->index;
+            $table->integer('guild_id')->unsigned()->index()->nullable();
         });
 
         Schema::create('guild_user', function (Blueprint $table) {

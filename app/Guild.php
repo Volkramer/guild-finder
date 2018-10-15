@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guild extends Model
 {
-    public function characters(){
+    public function characters()
+    {
         return $this->hasMany('App\Character');
     }
 
-    public function users(){
+    public function users()
+    {
         return $this->belongsToMany('App\User');
     }
 }

@@ -29,7 +29,7 @@ class CharacterController extends Controller
         $guild = Guild::where('guild_name', $request['guildName'])->first();
 
         $character = new Character;
-        $character->character_name = $request['characteName'];
+        $character->character_name = $request['characterName'];
         $character->class = $request['class'];
         $character->race = $request['race'];
         $character->server = $request['server'];
@@ -43,7 +43,7 @@ class CharacterController extends Controller
         }
 
         $user->characters()->save($character);
-        $guild->characters()->save($character);
+        $guild->characters()->associate($character);
 
         return response()->json([
             'message' => 'Character created'
