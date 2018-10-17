@@ -1,16 +1,20 @@
 <template>
-  <div>
-    <mainframe><p>blabla</p></mainframe>
-  </div>
+    <div>
+        <mainframe>
+            <p>
+
+            </p>
+        </mainframe>
+    </div>
 </template>
 
 <script>
-import mainframe from './mainframe'
-export default {
-  components: {
-    mainframe
-  }
-}
+    import mainframe from './mainframe'
+    export default {
+        components: {
+            mainframe
+        }
+    }
 </script>
 
 <style>
